@@ -1,5 +1,6 @@
 (ns final)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ¡¡¡¡LEA CON ATENCIÓN!!! ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -45,10 +46,13 @@
 ;; 1. Cree una función que devuelva true cuando la colección que se le pase como argumento esté compuesta por números sucesivos (e.g. 1,2,3,4...) 
 ;;    y false en caso contrario. (5 pts)
 
-(defn sucesivos?
-  [coll]
-  nil)
 
+(defn sucesivos? [xs]
+  (let [ordenados (sort xs)
+        resta (map #(apply - %) (partition 2 1 ordenados))]
+    (every? #(= -1 %) resta)))
+
+(sucesivos? (range 1 11 ) )
 
 ;; 2. Estamos creando un juego palabras en línea. Se le pide que cree una función que reciba una palabra (un String), a) convierta cada uno de sus caracteres a código ASCII,
 ;;    b) ordene la colección de números resultante de menor a mayor, c) que convierta de nuevo esos números a caracteres y, d) finalmente, que devuelva un String con la 
@@ -59,7 +63,26 @@
 
 (defn sacude-palabras
   [palabra]
-  nil)
+  (apply str (map char (sort (map int palabra)))))
+
+(sacude-palabras "corajudo")
 
 
 
+
+
+(map int "aA")
+
+(defn palabras [x] (map(int x)))
+
+(defn palabras [x] (sort(map int x)))
+
+(palabras s)
+
+(map int "Aa")
+
+(palabras "marmota")
+
+(defn palabras [x] (map char(sort(map int x))))
+
+(defn palabras [x] (apply str(map char (sort (map int x)))))

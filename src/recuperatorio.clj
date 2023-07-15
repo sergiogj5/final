@@ -76,3 +76,28 @@
   [calificaciones]
   [])
 
+(+ 2 2)
+()
+(defn consec? [data] (some identity (map = data (rest data))))
+
+(defn consecutive?
+  [coll]
+  (not= coll (coll)))
+
+(consecutive? [1 2 3])
+
+(defn sequential-numbers? [x y] (= x (- y 1)))
+
+((defn sequential-numbers? [x y] (= x (- y 1))))
+(defn sequential-numbers? [x y] (= x (- y 1)))
+(+ 2 2)
+
+(defn consecutive?
+  [coll]
+  (not= coll (dedupe coll)))
+
+(defn contains-consecutive? [xs]
+  (let [sorted (sort xs)
+        differences (map #(apply - %) (partition 2 1 sorted))]
+    (every? #(= -1 %) differences)))
+
